@@ -1,0 +1,69 @@
+{
+  "_comment": [
+    "Migrated from scripts/create_serie2_workout.py. Serie 2, week of 2026-08-24 (semana de fondo).",
+    "Source: data/week_2026-08-24.csv, 'Serie 2' column. See data/week_2026-08-24_workouts.md for the",
+    "human-readable draft and CLAUDE.md for the acronym glossary.",
+    "Known simplification: '8x15 vel VE' uses lap-button rest between reps (no rest duration in the plan).",
+    "Fix vs. the old script: the 100s in set 1 now carry equipment=pull_buoy ('100L pb' in the plan)."
+  ],
+  "name": "Serie 2 - Semana de fondo (24-28 Ago)",
+  "description": "Serie 2 - Semana de fondo (24-28 Ago). Ver notas por serie en cada paso.",
+  "pool_length_meters": 25,
+  "steps": [
+    {
+      "_comment": "600 (200L-100L pb): 2x (200 free + 100 free pull buoy)",
+      "type": "repeat",
+      "times": 2,
+      "steps": [
+        {"type": "swim", "distance": 200, "stroke": "free"},
+        {"type": "swim", "distance": 100, "stroke": "free", "equipment": "pull_buoy"}
+      ]
+    },
+    {
+      "_comment": "2x200 (50 pat flecha - 50L nad) patas: each 200 = 2x (50 streamline kick + 50 free), fins on throughout",
+      "type": "repeat",
+      "times": 2,
+      "steps": [
+        {
+          "type": "repeat",
+          "times": 2,
+          "steps": [
+            {"type": "swim", "distance": 50, "stroke": "choice", "equipment": "fins", "note": "Patada en posición de flecha"},
+            {"type": "swim", "distance": 50, "stroke": "free", "equipment": "fins"}
+          ]
+        }
+      ]
+    },
+    {
+      "_comment": "8x15 vel VE: 8x15 at speed, varying strokes, lap-button rest between reps",
+      "type": "repeat",
+      "times": 8,
+      "steps": [
+        {"type": "swim", "distance": 15, "stroke": "choice", "note": "Velocidad, variando estilos"},
+        {"type": "rest"}
+      ]
+    },
+    {
+      "_comment": "Serie x4: 200 free kick w/ fins, 100 free, 4x25 speed (10s rest), 100 easy free",
+      "type": "repeat",
+      "times": 4,
+      "steps": [
+        {"type": "swim", "distance": 200, "stroke": "free", "equipment": "fins"},
+        {"type": "swim", "distance": 100, "stroke": "free"},
+        {
+          "type": "repeat",
+          "times": 4,
+          "steps": [
+            {"type": "swim", "distance": 25, "stroke": "free", "note": "A velocidad"},
+            {"type": "rest", "seconds": 10}
+          ]
+        },
+        {"type": "swim", "distance": 100, "stroke": "free", "note": "Suave"}
+      ]
+    },
+    {
+      "_comment": "100 afloje: cooldown",
+      "type": "cooldown", "distance": 100, "stroke": "free"
+    }
+  ]
+}

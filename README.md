@@ -10,8 +10,10 @@ end-to-end against a real account — a "Test Swim - 1000m" workout (200 warmup,
 with lap-button rest, 200 cooldown, 25m pool) uploaded and pushed successfully to a
 Forerunner 570.
 
-Phase 2 (next): parse a coach's CSV into the same structured-workout shape and generate
-one Garmin workout per plan/session automatically.
+Phase 2 (done): a `python -m swim_plan` CLI that builds a workout from a declarative JSON
+spec file (see `examples/`) and uploads/pushes it — no new Python script per workout. The
+translation from a coach's CSV/screenshot to a spec is done by a coding agent using the
+glossary in `CLAUDE.md`.
 
 ## SDK research findings
 
@@ -57,11 +59,20 @@ one Garmin workout per plan/session automatically.
   `GARMIN_EMAIL`/`GARMIN_PASSWORD` env vars, with token caching in `~/.garminconnect` (only
   needs a real login once; prompts for MFA on stdin if required).
 - `swim_plan/swim_workout.py` — pool-swim workout builders: `warmup_step`, `swim_step`,
-  `cooldown_step`, `rest_step` (lap-button), `swim_repeat` ("N Times" block), and
-  `build_swim_workout` to assemble a full `SwimmingWorkout`.
-- `scripts/create_test_workout.py` — builds the sample 1000m workout above and pushes it
-  to Garmin Connect + the last-used device. Good smoke test after any change to
-  `swim_workout.py` or `client.py`.
+  `cooldown_step`, `rest_step` (lap-button), `timed_rest_step` (fixed seconds),
+  `swim_repeat` ("N Times" block), and `build_swim_workout` to assemble a full
+  `SwimmingWorkout`. Also `STROKE_TYPES` / `EQUIPMENT_TYPES` lookup dicts.
+- `swim_plan/spec.py` — parses/validates a declarative JSON workout spec (steps, nested
+  repeats, stroke, equipment, per-step notes, rest) and assembles the workout via the
+  builders above. Step orders are assigned automatically; `_`-prefixed keys are comments.
+- `swim_plan/cli.py` (+ `__main__.py`) — the `python -m swim_plan` CLI: `create` (build
+  from a spec, upload, optionally `--push`; `--dry-run` prints the exact upload payload
+  with no network calls), `list`, `delete`, `push`.
+- `examples/test_1000m.json` — the sample 1000m workout above as a spec. Good smoke test
+  (`create --dry-run`) after any change to `swim_workout.py`, `spec.py`, or `cli.py`.
+- `examples/serie2_2026-08-24.json` — a real coach workout (Serie 2, semana de fondo)
+  as a spec: nested repeats, fins/pull-buoy equipment, per-step Spanish notes, timed and
+  lap-button rest.
 
 ## Setup
 
@@ -69,21 +80,24 @@ one Garmin workout per plan/session automatically.
 python3 -m venv .venv
 .venv/bin/pip install -r requirements.txt
 cp .env.example .env   # fill in GARMIN_EMAIL / GARMIN_PASSWORD
-.venv/bin/python scripts/create_test_workout.py
+.venv/bin/python -m swim_plan create examples/test_1000m.json --dry-run   # no credentials needed
+.venv/bin/python -m swim_plan create examples/test_1000m.json --push      # upload + push to watch
 ```
 
 (This machine's system Python had no `pip`; the venv had to be created with
 `python3 -m venv --without-pip .venv` and pip bootstrapped via
 `get-pip.py` — see git history if that's needed again elsewhere.)
 
-## Next up (phase 2)
+## Next up
 
-Parse a coach's CSV into the same step/repeat structure `swim_workout.py` already builds,
-and generate a workout per session. Still open:
+The workflow is now: a coding agent reads the coach's CSV/screenshot (glossary in
+`CLAUDE.md`), writes a JSON spec per session, iterates with
+`python -m swim_plan create <spec> --dry-run`, then runs `create --push`. No new Python
+script per workout. Still open:
 
-- The actual CSV column layout/format the coach uses — no sample seen yet.
-- How a plan maps to a Garmin workout: one workout per row, per day, per week? Multiple
-  sets/repeats per session?
 - Whether to auto-schedule the generated workout onto a calendar date
   (`Garmin.schedule_workout()` exists in the library) or just upload it to the library for
   manual scheduling.
+- Pace/effort targets: "vel" (speed) and "suave" (easy) are still note text, not real
+  Garmin intensity/pace targets (see CLAUDE.md "Known simplifications").
+- A timed-rest-with-note combo, if a plan ever needs it (`rest` steps take no `note`).
