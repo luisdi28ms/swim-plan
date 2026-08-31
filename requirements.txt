@@ -1,0 +1,3 @@
+garminconnect
+pydantic
+python-dotenv
