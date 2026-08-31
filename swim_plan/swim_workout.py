@@ -39,10 +39,27 @@ STROKE_TYPES = {
 NO_STROKE = STROKE_TYPES["choice"]
 NO_EQUIPMENT = {"equipmentTypeId": 0, "displayOrder": 0}
 
+# equipmentTypeId values as used by Garmin Connect's workout-service.
+EQUIPMENT_TYPES = {
+    "fins": {"equipmentTypeId": 1, "equipmentTypeKey": "fins", "displayOrder": 1},
+    "kickboard": {"equipmentTypeId": 2, "equipmentTypeKey": "kickboard", "displayOrder": 2},
+    "paddles": {"equipmentTypeId": 3, "equipmentTypeKey": "paddles", "displayOrder": 3},
+    "pull_buoy": {"equipmentTypeId": 4, "equipmentTypeKey": "pull_buoy", "displayOrder": 4},
+    "snorkel": {"equipmentTypeId": 5, "equipmentTypeKey": "snorkel", "displayOrder": 5},
+}
+
 
 def _distance_step(
-    distance_meters: float, step_order: int, stroke: str, step_type_id: int, step_type_key: str, display_order: int
+    distance_meters: float,
+    step_order: int,
+    stroke: str,
+    step_type_id: int,
+    step_type_key: str,
+    display_order: int,
+    equipment: str | None = None,
+    note: str | None = None,
 ) -> ExecutableStep:
+    kwargs = {"description": note} if note else {}
     return ExecutableStep(
         stepOrder=step_order,
         stepType={"stepTypeId": step_type_id, "stepTypeKey": step_type_key, "displayOrder": display_order},
@@ -56,23 +73,42 @@ def _distance_step(
         preferredEndConditionUnit=POOL_LENGTH_UNIT_METER,
         targetType=NO_TARGET,
         strokeType=STROKE_TYPES.get(stroke, NO_STROKE),
-        equipmentType=NO_EQUIPMENT,
+        equipmentType=EQUIPMENT_TYPES.get(equipment, NO_EQUIPMENT) if equipment else NO_EQUIPMENT,
+        **kwargs,
     )
 
 
-def swim_step(distance_meters: float, step_order: int, stroke: str = "choice") -> ExecutableStep:
-    """A distance-based swim step, e.g. "4 x 100m free"."""
-    return _distance_step(distance_meters, step_order, stroke, StepType.INTERVAL, "interval", 3)
+def swim_step(
+    distance_meters: float,
+    step_order: int,
+    stroke: str = "choice",
+    equipment: str | None = None,
+    note: str | None = None,
+) -> ExecutableStep:
+    """A distance-based swim step, e.g. "4 x 100m free" or "50m choice w/ fins"."""
+    return _distance_step(distance_meters, step_order, stroke, StepType.INTERVAL, "interval", 3, equipment, note)
 
 
-def warmup_step(distance_meters: float, step_order: int, stroke: str = "choice") -> ExecutableStep:
+def warmup_step(
+    distance_meters: float,
+    step_order: int,
+    stroke: str = "choice",
+    equipment: str | None = None,
+    note: str | None = None,
+) -> ExecutableStep:
     """A distance-based warmup step, e.g. "600m choice"."""
-    return _distance_step(distance_meters, step_order, stroke, StepType.WARMUP, "warmup", 1)
+    return _distance_step(distance_meters, step_order, stroke, StepType.WARMUP, "warmup", 1, equipment, note)
 
 
-def cooldown_step(distance_meters: float, step_order: int, stroke: str = "choice") -> ExecutableStep:
+def cooldown_step(
+    distance_meters: float,
+    step_order: int,
+    stroke: str = "choice",
+    equipment: str | None = None,
+    note: str | None = None,
+) -> ExecutableStep:
     """A distance-based cooldown step."""
-    return _distance_step(distance_meters, step_order, stroke, StepType.COOLDOWN, "cooldown", 2)
+    return _distance_step(distance_meters, step_order, stroke, StepType.COOLDOWN, "cooldown", 2, equipment, note)
 
 
 def rest_step(step_order: int) -> ExecutableStep:
@@ -87,6 +123,24 @@ def rest_step(step_order: int) -> ExecutableStep:
             "displayable": True,
         },
         endConditionValue=None,
+        targetType=NO_TARGET,
+        strokeType=NO_STROKE,
+        equipmentType=NO_EQUIPMENT,
+    )
+
+
+def timed_rest_step(seconds: float, step_order: int) -> ExecutableStep:
+    """A fixed-duration rest step, e.g. the "sp" (segundos de pausa) rest in the plan."""
+    return ExecutableStep(
+        stepOrder=step_order,
+        stepType={"stepTypeId": StepType.REST, "stepTypeKey": "rest", "displayOrder": 5},
+        endCondition={
+            "conditionTypeId": ConditionType.TIME,
+            "conditionTypeKey": "time",
+            "displayOrder": 2,
+            "displayable": True,
+        },
+        endConditionValue=float(seconds),
         targetType=NO_TARGET,
         strokeType=NO_STROKE,
         equipmentType=NO_EQUIPMENT,
