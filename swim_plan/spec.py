@@ -9,8 +9,15 @@ Top-level shape::
       "name": "Serie 2 - ...",          # required, workout name
       "description": "one-line label",  # optional, workout-level label ONLY
       "pool_length_meters": 25,         # optional, default 25
+      "auto_rest": true,                # optional, default true (see below)
       "steps": [ ... ]                  # required, ordered list of steps
     }
+
+With ``auto_rest`` on (the default), a lap-button rest is inserted after
+every distance step (warmup/swim/cooldown) that is not already followed by
+a rest step, at every nesting level, except after the very last step of
+the workout. This gives the swimmer a pause at the wall to read the next
+step on the watch. Specs that already write explicit rests are unchanged.
 
 Step shapes (keys that start with ``_`` are ignored everywhere — use them
 for comments, e.g. ``"_comment": "8x15 vel VE"``)::
@@ -79,7 +86,10 @@ def _check_keys(obj: dict[str, Any], allowed: set[str], where: str) -> None:
         raise SpecError(f"{where}: unknown key(s) {sorted(unknown)}; allowed keys: {sorted(allowed)}")
 
 
-def _build_steps(items: Any, where: str, order: Iterator[int]) -> list[Any]:
+def _build_steps(
+    items: Any, where: str, order: Iterator[int], auto_rest: bool = False, is_last: bool = True
+) -> list[Any]:
+    """Build the steps of one list. ``is_last`` says whether this list ends the workout."""
     if not isinstance(items, list) or not items:
         raise SpecError(f"{where}: must be a non-empty list of steps")
     steps: list[Any] = []
@@ -90,6 +100,8 @@ def _build_steps(items: Any, where: str, order: Iterator[int]) -> list[Any]:
         step_type = item.get("type")
         if step_type not in _STEP_TYPES:
             raise SpecError(f"{here}: 'type' must be one of {list(_STEP_TYPES)}, got {step_type!r}")
+        last_here = is_last and index == len(items)
+        next_is_rest = index < len(items) and _step_type_of(items[index]) == "rest"
 
         if step_type == "repeat":
             _check_keys(item, {"type", "times", "steps"}, here)
@@ -97,7 +109,7 @@ def _build_steps(items: Any, where: str, order: Iterator[int]) -> list[Any]:
             if not isinstance(times, int) or isinstance(times, bool) or times < 1:
                 raise SpecError(f"{here}: 'times' must be an integer >= 1")
             group_order = next(order)
-            children = _build_steps(item.get("steps"), f"{here}.steps", order)
+            children = _build_steps(item.get("steps"), f"{here}.steps", order, auto_rest, last_here)
             steps.append(create_repeat_group(times, children, group_order))
         elif step_type == "rest":
             _check_keys(item, {"type", "seconds"}, here)
@@ -124,12 +136,18 @@ def _build_steps(items: Any, where: str, order: Iterator[int]) -> list[Any]:
                 raise SpecError(f"{here}: 'note' must be a string")
             builder = _DISTANCE_BUILDERS[step_type]
             steps.append(builder(distance, next(order), stroke, equipment=equipment, note=note))
+            if auto_rest and not next_is_rest and not last_here:
+                steps.append(rest_step(next(order)))
     return steps
+
+
+def _step_type_of(item: Any) -> Any:
+    return item.get("type") if isinstance(item, dict) else None
 
 
 def build_workout_from_spec(spec: dict[str, Any]):
     """Validate a parsed spec and assemble the SwimmingWorkout it describes."""
-    _check_keys(spec, {"name", "description", "pool_length_meters", "steps"}, "spec")
+    _check_keys(spec, {"name", "description", "pool_length_meters", "auto_rest", "steps"}, "spec")
     name = spec.get("name")
     if not isinstance(name, str) or not name.strip():
         raise SpecError("spec: 'name' must be a non-empty string")
@@ -140,7 +158,11 @@ def build_workout_from_spec(spec: dict[str, Any]):
     if not isinstance(pool_length, (int, float)) or isinstance(pool_length, bool) or pool_length <= 0:
         raise SpecError("spec: 'pool_length_meters' must be a number > 0")
 
-    steps = _build_steps(spec.get("steps"), "steps", itertools.count(1))
+    auto_rest = spec.get("auto_rest", True)
+    if not isinstance(auto_rest, bool):
+        raise SpecError("spec: 'auto_rest' must be true or false")
+
+    steps = _build_steps(spec.get("steps"), "steps", itertools.count(1), auto_rest)
     return build_swim_workout(
         name=name,
         steps=steps,

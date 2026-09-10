@@ -65,6 +65,9 @@ glossary in `CLAUDE.md`.
 - `swim_plan/spec.py` — parses/validates a declarative JSON workout spec (steps, nested
   repeats, stroke, equipment, per-step notes, rest) and assembles the workout via the
   builders above. Step orders are assigned automatically; `_`-prefixed keys are comments.
+  By default (`"auto_rest": true`) a lap-button rest is inserted after every swim step
+  that has no explicit rest after it, so the swimmer can read the next step on the watch
+  before starting it; set `"auto_rest": false` to write every rest by hand.
 - `swim_plan/cli.py` (+ `__main__.py`) — the `python -m swim_plan` CLI: `create` (build
   from a spec, upload, optionally `--push`; `--dry-run` prints the exact upload payload
   with no network calls), `list`, `delete`, `push`.
