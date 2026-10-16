@@ -1,0 +1,51 @@
+{
+  "_comment": [
+    "Workout from a coach text plan. Named 'Oct 16' per user; date 2026-10-16.",
+    "'600 (200L-100L pb)' modeled as 2x (200 free + 100 free with pull buoy) = 600.",
+    "'4x25 BB L' = 4x25 free, descending strokes (BB) in the note.",
+    "'2x100 vel en banderitas' = 2x100, speed between the backstroke flags, in the note.",
+    "'Serie x3': 300 free with fins (patas), 200 free with pull buoy (pb), 100 kick with fins ('pat patas').",
+    "'3x100 hipox' written as 3 separate steps (breathe every 3-5, 3-5-7, 3-5-7-9 strokes). Stroke not named, so 'choice'.",
+    "'100 afloje' = cooldown."
+  ],
+  "name": "Oct 16",
+  "description": "Oct 16.",
+  "pool_length_meters": 25,
+  "steps": [
+    {
+      "type": "repeat",
+      "times": 2,
+      "steps": [
+        {"type": "swim", "distance": 200, "stroke": "free"},
+        {"type": "swim", "distance": 100, "stroke": "free", "equipment": "pull_buoy"}
+      ]
+    },
+    {
+      "type": "repeat",
+      "times": 4,
+      "steps": [
+        {"type": "swim", "distance": 25, "stroke": "free", "note": "Bajando brazadas (BB)"}
+      ]
+    },
+    {
+      "type": "repeat",
+      "times": 2,
+      "steps": [
+        {"type": "swim", "distance": 100, "stroke": "choice", "note": "Velocidad en banderitas"}
+      ]
+    },
+    {
+      "type": "repeat",
+      "times": 3,
+      "steps": [
+        {"type": "swim", "distance": 300, "stroke": "free", "equipment": "fins"},
+        {"type": "swim", "distance": 200, "stroke": "free", "equipment": "pull_buoy"},
+        {"type": "swim", "distance": 100, "stroke": "choice", "equipment": "fins", "note": "Patada con aletas"}
+      ]
+    },
+    {"type": "swim", "distance": 100, "stroke": "choice", "note": "Hipoxia 1: respirar cada 3-5 brazadas"},
+    {"type": "swim", "distance": 100, "stroke": "choice", "note": "Hipoxia 2: respirar cada 3-5-7 brazadas"},
+    {"type": "swim", "distance": 100, "stroke": "choice", "note": "Hipoxia 3: respirar cada 3-5-7-9 brazadas"},
+    {"type": "cooldown", "distance": 100, "stroke": "free", "note": "Afloje"}
+  ]
+}

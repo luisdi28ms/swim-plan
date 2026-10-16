@@ -1,0 +1,55 @@
+{
+  "_comment": [
+    "Workout from a coach screenshot (column D, rows 30-50). Named 'Oct 15' per user; date 2026-10-15.",
+    "'500 (200L-50est)' modeled as 2x (200 free + 50 stroke) = 500.",
+    "'2x200 (50 pat flecha vel - 75L nadando)': partial-distance split stays one 200 step with a note (see CLAUDE.md simplifications). The two 75s do not add to 200 in the source; left as written.",
+    "'4x24 contando brazadas' read as 4x25 (24 looks like a typo for the pool length); stroke count is in the note.",
+    "'Serie x4' = 4x (4x25 counting strokes + 100 stroke).",
+    "'Elegir CI o L': two branches (Combinadistas: 3x (300 CI x75 + 100 suave); Libristas: 4x300 30sp + 100 suave). Only the Libristas branch is built; swap if the CI branch is wanted.",
+    "'30sp' = 30 s timed rest after each 300. '100 afloje' = cooldown."
+  ],
+  "name": "Oct 15",
+  "description": "Oct 15.",
+  "pool_length_meters": 25,
+  "steps": [
+    {
+      "type": "repeat",
+      "times": 2,
+      "steps": [
+        {"type": "swim", "distance": 200, "stroke": "free"},
+        {"type": "swim", "distance": 50, "stroke": "choice", "note": "Estilo"}
+      ]
+    },
+    {
+      "type": "repeat",
+      "times": 2,
+      "steps": [
+        {"type": "swim", "distance": 200, "stroke": "choice", "note": "50 patada flecha a velocidad - 75 L nadando"}
+      ]
+    },
+    {
+      "type": "repeat",
+      "times": 4,
+      "steps": [
+        {
+          "type": "repeat",
+          "times": 4,
+          "steps": [
+            {"type": "swim", "distance": 25, "stroke": "choice", "note": "Contando brazadas"}
+          ]
+        },
+        {"type": "swim", "distance": 100, "stroke": "choice", "note": "Estilo"}
+      ]
+    },
+    {
+      "type": "repeat",
+      "times": 4,
+      "steps": [
+        {"type": "swim", "distance": 300, "stroke": "free"},
+        {"type": "rest", "seconds": 30}
+      ]
+    },
+    {"type": "swim", "distance": 100, "stroke": "choice", "note": "Suave"},
+    {"type": "cooldown", "distance": 100, "stroke": "free", "note": "Afloje"}
+  ]
+}
