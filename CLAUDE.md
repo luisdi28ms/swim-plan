@@ -17,6 +17,7 @@ Use this table to translate Spanish swim-plan acronyms into Garmin workout steps
 | ap | Apnea | Breath-holding |
 | VE | Variando estilos | Varying strokes |
 | pb | pull buoy | Pull buoy |
+| banqueta | Salida desde el bloque de salida | Start from the starting block (dive in) — no equipment; put it in the step `note` |
 | patas | Uso de aletas (fins) | Fins — tag the step(s) with `equipment="fins"` |
 
 # Garmin workout-service field reference
