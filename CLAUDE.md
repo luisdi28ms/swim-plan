@@ -62,3 +62,8 @@ workout's overall description. The workout description should stay a one-line la
 - Partial-distance instructions within a single rep (e.g. "25 pat flecha - 75L nad" inside
   one 100m rep) are NOT split into two Garmin steps — they stay one step with a `note`
   describing the split, since Garmin steps are single distance/stroke/equipment units.
+
+# Workout naming
+
+Always name a workout (the `name` field and the file name) after the day of the swim session,
+which is tomorrow's date, in `Month-DD` format. Example: when run on Oct 16, name it `Oct-17`.
