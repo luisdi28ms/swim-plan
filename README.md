@@ -13,7 +13,7 @@ Forerunner 570.
 Phase 2 (done): a `python -m swim_plan` CLI that builds a workout from a declarative JSON
 spec file (see `examples/`) and uploads/pushes it — no new Python script per workout. The
 translation from a coach's CSV/screenshot to a spec is done by a coding agent using the
-glossary in `CLAUDE.md`.
+glossary in `AGENTS.md`.
 
 ## SDK research findings
 
@@ -94,7 +94,7 @@ cp .env.example .env   # fill in GARMIN_EMAIL / GARMIN_PASSWORD
 ## Next up
 
 The workflow is now: a coding agent reads the coach's CSV/screenshot (glossary in
-`CLAUDE.md`), writes a JSON spec per session, iterates with
+`AGENTS.md`), writes a JSON spec per session, iterates with
 `python -m swim_plan create <spec> --dry-run`, then runs `create --push`. No new Python
 script per workout. Still open:
 
@@ -102,5 +102,5 @@ script per workout. Still open:
   (`Garmin.schedule_workout()` exists in the library) or just upload it to the library for
   manual scheduling.
 - Pace/effort targets: "vel" (speed) and "suave" (easy) are still note text, not real
-  Garmin intensity/pace targets (see CLAUDE.md "Known simplifications").
+  Garmin intensity/pace targets (see AGENTS.md "Known simplifications").
 - A timed-rest-with-note combo, if a plan ever needs it (`rest` steps take no `note`).
