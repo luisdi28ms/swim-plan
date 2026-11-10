@@ -67,3 +67,8 @@ workout's overall description. The workout description should stay a one-line la
 
 Always name a workout (the `name` field and the file name) after the day of the swim session,
 which is tomorrow's date, in `Month-DD` format. Example: when run on Oct 16, name it `Oct-17`.
+
+# Add a workout to the watch
+
+When Luis sends a coach plan and says "add to my watch", follow `.claude/skills/add-to-watch/SKILL.md`.
+After a successful `--push`, commit the spec file. Push to `origin main` when Luis asks.
