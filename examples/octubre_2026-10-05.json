@@ -1,0 +1,64 @@
+{
+  "_comment": [
+    "Workout from a coach screenshot, week of 2026-10-05 (5-9 Oct).",
+    "'300 (50flecha-50 pat tabla) patas' modeled as 3x (50 streamline kick + 50 kick with board), fins on both (trailing 'patas').",
+    "'banqueta' = starting block, not a kickboard. '100 con banqueta est, L o CI': start with a dive from the block; stroke choice, note says free or medley.",
+    "'bajando brazadas' (BB) = descending stroke count, kept as a note. 15sp = 15 s timed rest."
+  ],
+  "name": "Octubre (5-9 Oct)",
+  "description": "Octubre (5-9 Oct).",
+  "pool_length_meters": 25,
+  "steps": [
+    {"type": "warmup", "distance": 400, "stroke": "free"},
+    {
+      "type": "repeat",
+      "times": 3,
+      "steps": [
+        {
+          "type": "repeat",
+          "times": 4,
+          "steps": [
+            {"type": "swim", "distance": 25, "stroke": "choice", "note": "Bajando brazadas"}
+          ]
+        },
+        {"type": "swim", "distance": 100, "stroke": "choice", "note": "Estilo"},
+        {
+          "type": "repeat",
+          "times": 2,
+          "steps": [
+            {"type": "swim", "distance": 25, "stroke": "choice", "note": "Velocidad"},
+            {"type": "rest", "seconds": 15}
+          ]
+        },
+        {"type": "swim", "distance": 50, "stroke": "free", "note": "Suave"}
+      ]
+    },
+    {
+      "_comment": "300 (50flecha-50 pat tabla) patas: 3x (50 streamline kick + 50 kick with board), fins",
+      "type": "repeat",
+      "times": 3,
+      "steps": [
+        {"type": "swim", "distance": 50, "stroke": "choice", "equipment": "fins", "note": "Patada en flecha"},
+        {"type": "swim", "distance": 50, "stroke": "choice", "equipment": "fins", "note": "Patada con tabla"}
+      ]
+    },
+    {"type": "swim", "distance": 100, "stroke": "free", "note": "Suave"},
+    {
+      "type": "repeat",
+      "times": 4,
+      "steps": [
+        {
+          "type": "repeat",
+          "times": 4,
+          "steps": [
+            {"type": "swim", "distance": 50, "stroke": "free"},
+            {"type": "rest", "seconds": 15}
+          ]
+        },
+        {"type": "swim", "distance": 100, "stroke": "choice", "note": "Salida desde banqueta (clavado desde el bloque). Estilo, libre o combinado"},
+        {"type": "swim", "distance": 100, "stroke": "free", "note": "Suave"}
+      ]
+    },
+    {"type": "cooldown", "distance": 200, "stroke": "free"}
+  ]
+}

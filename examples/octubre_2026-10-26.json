@@ -1,0 +1,39 @@
+{
+  "_comment": [
+    "Workout from a coach screenshot of a sheet (column B, rows 30-40). Week assumed 2026-10-26 (26-30 Oct); screenshot gave no date or tab name.",
+    "'3x200 (100est-100 Lprog x25)' modeled as 3x (100 stroke + 100 free progressive every 25).",
+    "'16x50 L TD: 45s / 50s / 55s / 1' / 1:10' (orange) + 'Elegir un intervalo para todos los 50s': 16x 50 free, interval choice kept in the note. Lap-button rest auto-inserted between reps.",
+    "'2x200 (25pat-25L) patas': 2x 200 with fins; 'pat' (kick) split stays in the note (partial-distance rule).",
+    "'200 afloje' = 200 easy cooldown."
+  ],
+  "name": "Octubre (26-30 Oct)",
+  "description": "Octubre (26-30 Oct).",
+  "pool_length_meters": 25,
+  "steps": [
+    {"type": "warmup", "distance": 400, "stroke": "free"},
+    {
+      "type": "repeat",
+      "times": 3,
+      "steps": [
+        {"type": "swim", "distance": 100, "stroke": "choice", "note": "Estilo"},
+        {"type": "swim", "distance": 100, "stroke": "free", "note": "Progresivo cada 25"}
+      ]
+    },
+    {
+      "type": "repeat",
+      "times": 16,
+      "steps": [
+        {"type": "swim", "distance": 50, "stroke": "free", "note": "TD: elegir un intervalo para todos los 50s: 45s / 50s / 55s / 1' / 1:10"}
+      ]
+    },
+    {"type": "swim", "distance": 100, "stroke": "free", "note": "Suave"},
+    {
+      "type": "repeat",
+      "times": 2,
+      "steps": [
+        {"type": "swim", "distance": 200, "stroke": "free", "equipment": "fins", "note": "25 patada - 25 nado"}
+      ]
+    },
+    {"type": "cooldown", "distance": 200, "stroke": "free", "note": "Afloje"}
+  ]
+}

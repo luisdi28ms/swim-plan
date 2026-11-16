@@ -1,0 +1,36 @@
+{
+  "_comment": [
+    "Pasted plan. Named 'Nov-06' = swim day (tomorrow). Local time Nov 5, ~9 PM (UTC Nov 6).",
+    "'800 L' = warmup, 800 free. '2x200 (50tec-50nad) L': split stays one step with a note.",
+    "'5x300 L (25vel-75mod) 20sp' = 5x300 free, 20 s timed rest after each rep.",
+    "'400 manop y patas': one equipment slot, so paddles + fins in the note.",
+    "'3x100 hipox' with per-rep breathing patterns: three separate steps with notes.",
+    "'100 afloje' = easy cooldown."
+  ],
+  "name": "Nov-06",
+  "description": "Nov-06.",
+  "pool_length_meters": 25,
+  "steps": [
+    {"type": "warmup", "distance": 800, "stroke": "free"},
+    {
+      "type": "repeat",
+      "times": 2,
+      "steps": [
+        {"type": "swim", "distance": 200, "stroke": "free", "note": "50 tecnica - 50 nado"}
+      ]
+    },
+    {
+      "type": "repeat",
+      "times": 5,
+      "steps": [
+        {"type": "swim", "distance": 300, "stroke": "free", "note": "25 velocidad - 75 moderado"},
+        {"type": "rest", "seconds": 20}
+      ]
+    },
+    {"type": "swim", "distance": 400, "stroke": "free", "equipment": "paddles", "note": "Y patas (aletas)"},
+    {"type": "swim", "distance": 100, "stroke": "free", "note": "Hipoxico: respirar cada 3-5"},
+    {"type": "swim", "distance": 100, "stroke": "free", "note": "Hipoxico: respirar cada 3-7"},
+    {"type": "swim", "distance": 100, "stroke": "free", "note": "Hipoxico: respirar cada 3-9"},
+    {"type": "cooldown", "distance": 100, "stroke": "free", "note": "Afloje"}
+  ]
+}

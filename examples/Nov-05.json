@@ -1,0 +1,40 @@
+{
+  "_comment": [
+    "Workout from a coach screenshot (sheet column D, rows 2-11, tab 'Noviembre').",
+    "Named 'Nov-05' = swim day (tomorrow). Local time was Nov 4, 11:10 PM (server UTC is Nov 5).",
+    "'500L' = warmup, 500 free. '3x100 tec nad' = 3x100 swim technique drills.",
+    "'8x15 vel CI-L' = 8x15 at speed, medley order or free. 15m precedent: serie2_2026-08-24.",
+    "'15x100 (25est-75L)': partial-distance split stays one step with a note.",
+    "'100 suave' = easy. '200 pat patas' = 200 kick with fins. '200 afloje' = easy cooldown."
+  ],
+  "name": "Nov-05",
+  "description": "Nov-05.",
+  "pool_length_meters": 25,
+  "steps": [
+    {"type": "warmup", "distance": 500, "stroke": "free"},
+    {
+      "type": "repeat",
+      "times": 3,
+      "steps": [
+        {"type": "swim", "distance": 100, "stroke": "choice", "note": "Tecnica de nado"}
+      ]
+    },
+    {
+      "type": "repeat",
+      "times": 8,
+      "steps": [
+        {"type": "swim", "distance": 15, "stroke": "choice", "note": "Velocidad. Combinado o libre"}
+      ]
+    },
+    {
+      "type": "repeat",
+      "times": 15,
+      "steps": [
+        {"type": "swim", "distance": 100, "stroke": "choice", "note": "25 estilo - 75 libre"}
+      ]
+    },
+    {"type": "swim", "distance": 100, "stroke": "free", "note": "Suave"},
+    {"type": "swim", "distance": 200, "stroke": "choice", "equipment": "fins", "note": "Patada con patas"},
+    {"type": "cooldown", "distance": 200, "stroke": "free", "note": "Afloje"}
+  ]
+}

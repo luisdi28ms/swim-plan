@@ -1,0 +1,61 @@
+{
+  "_comment": [
+    "Workout from a coach screenshot (sheet column B, rows 86-101). Named 'Oct-27' = swim day (tomorrow), per CLAUDE.md.",
+    "'500L' = warmup, 500 free.",
+    "'Serie x3 un estilo por serie o L': 3 rounds, stroke choice (one stroke per round, or free), kept in note.",
+    "'4x25 BB' = descending strokes; '2x50 prog' = progressive; '100 pat sin patas' = 100 kick, no fins (no equipment, note only).",
+    "'Serie x4': 25 from the block (banqueta, note only), 3x25 free, 200 easy.",
+    "'4x75 CI, est o L 15sp': 4x75 combined (stroke or free), 15s rest. '100 suave' = easy cooldown."
+  ],
+  "name": "Oct-27",
+  "description": "Oct-27.",
+  "pool_length_meters": 25,
+  "steps": [
+    {"type": "warmup", "distance": 500, "stroke": "free"},
+    {
+      "type": "repeat",
+      "times": 3,
+      "steps": [
+        {
+          "type": "repeat",
+          "times": 4,
+          "steps": [
+            {"type": "swim", "distance": 25, "stroke": "choice", "note": "Bajando brazadas. Un estilo por serie o libre"}
+          ]
+        },
+        {
+          "type": "repeat",
+          "times": 2,
+          "steps": [
+            {"type": "swim", "distance": 50, "stroke": "choice", "note": "Progresivo. Un estilo por serie o libre"}
+          ]
+        },
+        {"type": "swim", "distance": 100, "stroke": "choice", "note": "Patada sin patas (sin aletas)"}
+      ]
+    },
+    {
+      "type": "repeat",
+      "times": 4,
+      "steps": [
+        {"type": "swim", "distance": 25, "stroke": "free", "note": "Salida desde la banqueta"},
+        {
+          "type": "repeat",
+          "times": 3,
+          "steps": [
+            {"type": "swim", "distance": 25, "stroke": "free"}
+          ]
+        },
+        {"type": "swim", "distance": 200, "stroke": "free", "note": "Suave"}
+      ]
+    },
+    {
+      "type": "repeat",
+      "times": 4,
+      "steps": [
+        {"type": "swim", "distance": 75, "stroke": "choice", "note": "Combinado, estilo o libre"},
+        {"type": "rest", "seconds": 15}
+      ]
+    },
+    {"type": "cooldown", "distance": 100, "stroke": "free", "note": "Suave"}
+  ]
+}

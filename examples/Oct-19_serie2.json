@@ -1,0 +1,49 @@
+{
+  "_comment": [
+    "Workout from a coach screenshot (text plan). Named 'Oct-19' = today (user asked for today's date). File has a suffix because examples/Oct-19.json already exists.",
+    "'300 (200L-100est)' = warmup 200 free + 100 'estilo' (stroke not named -> choice).",
+    "'Serie x2': 2x50 progressive; 4x25 kick at speed with 20 s rest ('patada' = kick, no fins named, stroke choice); 100 VL (long turns) in the note.",
+    "'Serie x3': 100 CI progressive every 25; 100 easy; 200 pull buoy.",
+    "'200 L patas BL' = 200 free with fins, long strokes in the note. '200 afloje' = cooldown."
+  ],
+  "name": "Oct-19",
+  "description": "Oct-19.",
+  "pool_length_meters": 25,
+  "steps": [
+    {"type": "warmup", "distance": 200, "stroke": "free"},
+    {"type": "swim", "distance": 100, "stroke": "choice", "note": "Estilo"},
+    {
+      "type": "repeat",
+      "times": 2,
+      "steps": [
+        {
+          "type": "repeat",
+          "times": 2,
+          "steps": [
+            {"type": "swim", "distance": 50, "stroke": "free", "note": "Progresivo"}
+          ]
+        },
+        {
+          "type": "repeat",
+          "times": 4,
+          "steps": [
+            {"type": "swim", "distance": 25, "stroke": "choice", "note": "Patada a velocidad"},
+            {"type": "rest", "seconds": 20}
+          ]
+        },
+        {"type": "swim", "distance": 100, "stroke": "free", "note": "Vueltas largas (VL)"}
+      ]
+    },
+    {
+      "type": "repeat",
+      "times": 3,
+      "steps": [
+        {"type": "swim", "distance": 100, "stroke": "choice", "note": "Combinado (CI) progresivo cada 25"},
+        {"type": "swim", "distance": 100, "stroke": "free", "note": "Suave"},
+        {"type": "swim", "distance": 200, "stroke": "free", "equipment": "pull_buoy"}
+      ]
+    },
+    {"type": "swim", "distance": 200, "stroke": "free", "equipment": "fins", "note": "Brazadas largas (BL)"},
+    {"type": "cooldown", "distance": 200, "stroke": "free", "note": "Afloje"}
+  ]
+}

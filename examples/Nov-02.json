@@ -1,0 +1,33 @@
+{
+  "_comment": [
+    "Workout from a coach screenshot (sheet column B, rows 2-8, header 'Afloje', tab 'Noviembre').",
+    "Named 'Nov-02' = swim day (tomorrow). Local time was Nov 1, 8:57 PM (server UTC is already Nov 2).",
+    "'400L' = warmup, 400 free.",
+    "'2x200 (100est-100L pb)': 2x (100 stroke + 100 free with pull buoy). Same split as octubre_2026-10-26.",
+    "'4x100 (25est-75L)': partial-distance split stays one step with a note.",
+    "'200 patas opt': 200 with fins, optional. '200 afloje' = easy cooldown."
+  ],
+  "name": "Nov-02",
+  "description": "Nov-02.",
+  "pool_length_meters": 25,
+  "steps": [
+    {"type": "warmup", "distance": 400, "stroke": "free"},
+    {
+      "type": "repeat",
+      "times": 2,
+      "steps": [
+        {"type": "swim", "distance": 100, "stroke": "choice", "note": "Estilo"},
+        {"type": "swim", "distance": 100, "stroke": "free", "equipment": "pull_buoy", "note": "Libre con pull buoy"}
+      ]
+    },
+    {
+      "type": "repeat",
+      "times": 4,
+      "steps": [
+        {"type": "swim", "distance": 100, "stroke": "choice", "note": "25 estilo - 75 libre"}
+      ]
+    },
+    {"type": "swim", "distance": 200, "stroke": "choice", "equipment": "fins", "note": "Opcional"},
+    {"type": "cooldown", "distance": 200, "stroke": "free", "note": "Afloje"}
+  ]
+}

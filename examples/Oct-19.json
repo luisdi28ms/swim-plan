@@ -1,0 +1,55 @@
+{
+  "_comment": [
+    "Workout from a coach screenshot (text plan). Named 'Oct-19' = swim day (tomorrow), per CLAUDE.md.",
+    "'600 L' = warmup, 600 free. 'tec nad opt' = technique swimming, optional (note).",
+    "'Serie x3': 200 kick with fins ('pat patas'), 100 'estilo' (stroke not named -> choice).",
+    "'5x100 (25 est vel - 75mod)': one step per rep with the split in the note. '100 suave' = easy 100 after the set.",
+    "'300 manoplas y patas': one equipment slot per step, so fins is the equipment and paddles go in the note.",
+    "'6x300': odd reps 300 free with fins, even reps CI x75 or 25 est - 75 free; modeled as 3x (odd + even).",
+    "'3x100 hipox' written as 3 separate steps (breathe every 3-5, 3-5-7, 3-5-7-9 strokes).",
+    "'300 BL' = long strokes. '200 afloje' = cooldown."
+  ],
+  "name": "Oct-19",
+  "description": "Oct-19.",
+  "pool_length_meters": 25,
+  "steps": [
+    {"type": "warmup", "distance": 600, "stroke": "free"},
+    {
+      "type": "repeat",
+      "times": 3,
+      "steps": [
+        {"type": "swim", "distance": 100, "stroke": "free", "note": "Técnica de nado (optativo)"}
+      ]
+    },
+    {
+      "type": "repeat",
+      "times": 3,
+      "steps": [
+        {"type": "swim", "distance": 200, "stroke": "choice", "equipment": "fins", "note": "Patada con aletas"},
+        {"type": "swim", "distance": 100, "stroke": "choice", "note": "Estilo"}
+      ]
+    },
+    {
+      "type": "repeat",
+      "times": 5,
+      "steps": [
+        {"type": "swim", "distance": 100, "stroke": "choice", "note": "25 estilo velocidad - 75 moderado"}
+      ]
+    },
+    {"type": "swim", "distance": 100, "stroke": "free", "note": "Suave"},
+    {"type": "swim", "distance": 300, "stroke": "free", "equipment": "fins", "note": "Con manoplas y patas"},
+    {
+      "type": "repeat",
+      "times": 3,
+      "steps": [
+        {"type": "swim", "distance": 300, "stroke": "free", "equipment": "fins"},
+        {"type": "swim", "distance": 300, "stroke": "choice", "note": "CI x75 o 25 estilo - 75 libre"}
+      ]
+    },
+    {"type": "swim", "distance": 100, "stroke": "choice", "note": "Hipoxia 1: respirar cada 3-5 brazadas"},
+    {"type": "swim", "distance": 100, "stroke": "choice", "note": "Hipoxia 2: respirar cada 3-5-7 brazadas"},
+    {"type": "swim", "distance": 100, "stroke": "choice", "note": "Hipoxia 3: respirar cada 3-5-7-9 brazadas"},
+    {"type": "swim", "distance": 300, "stroke": "free", "note": "Brazadas largas (BL)"},
+    {"type": "cooldown", "distance": 200, "stroke": "free", "note": "Afloje"}
+  ]
+}

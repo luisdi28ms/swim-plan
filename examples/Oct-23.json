@@ -1,0 +1,44 @@
+{
+  "_comment": [
+    "Workout from a coach screenshot (text plan). Named 'Oct-23' = swim day (tomorrow), per CLAUDE.md.",
+    "'500L' = warmup, 500 free. '4x100 tec nad opt' = technique swimming, optional (note).",
+    "'4x50 prog opt' = progressive, optional; stroke not named -> choice.",
+    "'10x100 (25pat-75L nad) patas 15sp': 10 reps with fins, 15s rest; split stays in the note.",
+    "'100 suave' = easy 100 free.",
+    "'3x200 L': reps 1 and 3 with paddles and fins (fins = equipment, paddles in note); rep 2 plain free.",
+    "'200 afloje' = cooldown."
+  ],
+  "name": "Oct-23",
+  "description": "Oct-23.",
+  "pool_length_meters": 25,
+  "steps": [
+    {"type": "warmup", "distance": 500, "stroke": "free"},
+    {
+      "type": "repeat",
+      "times": 4,
+      "steps": [
+        {"type": "swim", "distance": 100, "stroke": "free", "note": "Técnica de nado (optativo)"}
+      ]
+    },
+    {
+      "type": "repeat",
+      "times": 4,
+      "steps": [
+        {"type": "swim", "distance": 50, "stroke": "choice", "note": "Progresivo (optativo)"}
+      ]
+    },
+    {
+      "type": "repeat",
+      "times": 10,
+      "steps": [
+        {"type": "swim", "distance": 100, "stroke": "free", "equipment": "fins", "note": "25 patada - 75 libre nadando"},
+        {"type": "rest", "seconds": 15}
+      ]
+    },
+    {"type": "swim", "distance": 100, "stroke": "free", "note": "Suave"},
+    {"type": "swim", "distance": 200, "stroke": "free", "equipment": "fins", "note": "Con manoplas y patas"},
+    {"type": "swim", "distance": 200, "stroke": "free"},
+    {"type": "swim", "distance": 200, "stroke": "free", "equipment": "fins", "note": "Con manoplas y patas"},
+    {"type": "cooldown", "distance": 200, "stroke": "free", "note": "Afloje"}
+  ]
+}

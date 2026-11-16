@@ -1,0 +1,49 @@
+{
+  "_comment": [
+    "Coach screenshot, week 'Oceanman DR' (9-13 Nov). Named 'Nov-09' = swim day.",
+    "Local time Nov 8, ~9:30 PM (server UTC is Nov 9).",
+    "'Serie x3': 200 (25 estilo vel - 75 libre mod) + 100 kick with fins, progressive per 25.",
+    "'4x200': reps 1 and 3 paddles + fins; reps 2 and 4 '25 est - 25 L'. Repeat of 2 pairs.",
+    "'4x100 CI 20sp' = 4x100 medley, 20 s timed rest. '4x50 ap' = apnea.",
+    "'200 pb' = pull buoy. '100 afloje' = easy cooldown."
+  ],
+  "name": "Nov-09",
+  "description": "Nov-09. Oceanman DR week.",
+  "pool_length_meters": 25,
+  "steps": [
+    {"type": "warmup", "distance": 400, "stroke": "free"},
+    {
+      "type": "repeat",
+      "times": 3,
+      "steps": [
+        {"type": "swim", "distance": 200, "stroke": "choice", "note": "25 estilo velocidad - 75 libre moderado"},
+        {"type": "swim", "distance": 100, "stroke": "choice", "equipment": "fins", "note": "Patada con patas, progresivo cada 25"}
+      ]
+    },
+    {
+      "type": "repeat",
+      "times": 2,
+      "steps": [
+        {"type": "swim", "distance": 200, "stroke": "free", "equipment": "paddles", "note": "Manoplas y patas (aletas)"},
+        {"type": "swim", "distance": 200, "stroke": "choice", "note": "25 estilo - 25 libre"}
+      ]
+    },
+    {
+      "type": "repeat",
+      "times": 4,
+      "steps": [
+        {"type": "swim", "distance": 100, "stroke": "choice", "note": "Combinado"},
+        {"type": "rest", "seconds": 20}
+      ]
+    },
+    {
+      "type": "repeat",
+      "times": 4,
+      "steps": [
+        {"type": "swim", "distance": 50, "stroke": "free", "note": "Apnea"}
+      ]
+    },
+    {"type": "swim", "distance": 200, "stroke": "free", "equipment": "pull_buoy"},
+    {"type": "cooldown", "distance": 100, "stroke": "free", "note": "Afloje"}
+  ]
+}

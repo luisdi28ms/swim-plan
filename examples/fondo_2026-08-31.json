@@ -1,0 +1,56 @@
+{
+  "_comment": [
+    "Workout from a coach screenshot (2026-08-31). Not in data/week_2026-08-24.csv.",
+    "Open question: 'est' in '100est' / '50est' is read as 'estilo' (a non-free stroke, swimmer's choice) -",
+    "not the same as 'Esp' (specialty/best stroke) in CLAUDE.md. Kept as stroke='choice' with a note.",
+    "Blank row in the source table between the 6x250 set and the 6x50 fins set is a spacer, no data."
+  ],
+  "name": "Fondo - Semana (31 Ago)",
+  "description": "Fondo - Semana (31 Ago).",
+  "pool_length_meters": 25,
+  "steps": [
+    {
+      "_comment": "600 (100L-100est-100L): 2x (100 free + 100 stroke + 100 free)",
+      "type": "repeat",
+      "times": 2,
+      "steps": [
+        {"type": "swim", "distance": 100, "stroke": "free"},
+        {"type": "swim", "distance": 100, "stroke": "choice", "note": "Estilo (a elección)"},
+        {"type": "swim", "distance": 100, "stroke": "free"}
+      ]
+    },
+    {
+      "_comment": "3x100 tec nad opt: technique+swim, optional",
+      "type": "repeat",
+      "times": 3,
+      "steps": [
+        {"type": "swim", "distance": 100, "stroke": "choice", "note": "Tecnica-nado, optativo"}
+      ]
+    },
+    {
+      "_comment": "100 suave: easy",
+      "type": "swim", "distance": 100, "stroke": "free", "note": "Suave"
+    },
+    {
+      "_comment": "6x250 (50est vel-200L mod): each 250 = 50 stroke at speed + 200 free moderate",
+      "type": "repeat",
+      "times": 6,
+      "steps": [
+        {"type": "swim", "distance": 50, "stroke": "choice", "note": "Estilo, a velocidad"},
+        {"type": "swim", "distance": 200, "stroke": "free", "note": "Moderado"}
+      ]
+    },
+    {
+      "_comment": "6x50 pat patas: kick with fins",
+      "type": "repeat",
+      "times": 6,
+      "steps": [
+        {"type": "swim", "distance": 50, "stroke": "choice", "equipment": "fins", "note": "Patada"}
+      ]
+    },
+    {
+      "_comment": "200 afloje: cooldown",
+      "type": "cooldown", "distance": 200, "stroke": "free"
+    }
+  ]
+}

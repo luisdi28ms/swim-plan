@@ -1,0 +1,35 @@
+{
+  "_comment": [
+    "Coach screenshot. Named 'Nov-13' = swim day.",
+    "Local time Nov 12, ~9 PM (server UTC is Nov 13).",
+    "'4x500 30sp': four different 500s, each with 30 s rest.",
+    "'200 L mod - 50est vel' fills 500 as 2 rounds: stays one step with a note.",
+    "'Pat y manop': one equipment slot, paddles + fins in note.",
+    "'400 L prog x 100' = free, progressive every 100."
+  ],
+  "name": "Nov-13",
+  "description": "Nov-13.",
+  "pool_length_meters": 25,
+  "steps": [
+    {"type": "warmup", "distance": 300, "stroke": "free"},
+    {"type": "swim", "distance": 200, "stroke": "free", "note": "Tecnica. Brazadas largas, vueltas largas"},
+    {
+      "type": "repeat",
+      "times": 4,
+      "steps": [
+        {"type": "swim", "distance": 25, "stroke": "choice", "note": "Velocidad"}
+      ]
+    },
+    {"type": "swim", "distance": 500, "stroke": "free"},
+    {"type": "rest", "seconds": 30},
+    {"type": "swim", "distance": 500, "stroke": "free", "note": "2x (200 libre moderado - 50 estilo velocidad)"},
+    {"type": "rest", "seconds": 30},
+    {"type": "swim", "distance": 500, "stroke": "free", "equipment": "fins", "note": "Patas"},
+    {"type": "rest", "seconds": 30},
+    {"type": "swim", "distance": 500, "stroke": "free"},
+    {"type": "swim", "distance": 200, "stroke": "free", "equipment": "pull_buoy"},
+    {"type": "swim", "distance": 200, "stroke": "free", "equipment": "paddles", "note": "Patas y manoplas"},
+    {"type": "swim", "distance": 400, "stroke": "free", "note": "Progresivo cada 100"},
+    {"type": "cooldown", "distance": 200, "stroke": "free", "note": "Afloje"}
+  ]
+}

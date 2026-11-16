@@ -1,0 +1,49 @@
+{
+  "_comment": [
+    "Workout from a coach screenshot of the 'Octubre' tab (column F 'Fondo', rows 2-19). Week assumed 2026-10-19 (19-23 Oct); screenshot gave no date.",
+    "'600 (250L-50prog)' modeled as 2x (250 free + 50 progressive) = 600.",
+    "'30sp' = 30 s timed rest after the orange step. 'patas' = fins. 'banqueta' = starting block, kept in the step note. 'pb' = pull buoy.",
+    "Green rows (100L, 200L, 300L, 400L pb) are the recovery swim that follows each orange set."
+  ],
+  "name": "Fondo - Octubre (19-23 Oct)",
+  "description": "Fondo - Octubre (19-23 Oct).",
+  "pool_length_meters": 25,
+  "steps": [
+    {
+      "type": "repeat",
+      "times": 2,
+      "steps": [
+        {"type": "swim", "distance": 250, "stroke": "free"},
+        {"type": "swim", "distance": 50, "stroke": "choice", "note": "Progresivo"}
+      ]
+    },
+    {
+      "type": "repeat",
+      "times": 2,
+      "steps": [
+        {"type": "swim", "distance": 100, "stroke": "free", "note": "Técnica-nado"}
+      ]
+    },
+    {
+      "type": "repeat",
+      "times": 4,
+      "steps": [
+        {"type": "swim", "distance": 25, "stroke": "choice", "note": "Velocidad"}
+      ]
+    },
+    {"type": "swim", "distance": 100, "stroke": "free", "note": "Suave"},
+    {"type": "swim", "distance": 400, "stroke": "free", "equipment": "fins"},
+    {"type": "rest", "seconds": 30},
+    {"type": "swim", "distance": 100, "stroke": "free"},
+    {"type": "swim", "distance": 300, "stroke": "free"},
+    {"type": "rest", "seconds": 30},
+    {"type": "swim", "distance": 200, "stroke": "free"},
+    {"type": "swim", "distance": 200, "stroke": "free"},
+    {"type": "rest", "seconds": 30},
+    {"type": "swim", "distance": 300, "stroke": "free"},
+    {"type": "swim", "distance": 100, "stroke": "free", "note": "Salida desde banqueta (clavado desde el bloque)"},
+    {"type": "rest", "seconds": 30},
+    {"type": "swim", "distance": 400, "stroke": "free", "equipment": "pull_buoy"},
+    {"type": "cooldown", "distance": 200, "stroke": "free"}
+  ]
+}

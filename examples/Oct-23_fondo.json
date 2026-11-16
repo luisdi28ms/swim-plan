@@ -1,0 +1,46 @@
+{
+  "_comment": [
+    "Workout from a coach screenshot ('Fondo normal'). Named 'Oct-23' = swim day (tomorrow), per CLAUDE.md.",
+    "'400 (300L-100L pb)': 300 free as warmup + 100 free with pull buoy.",
+    "'brazadas de ubicacion' = catch/placement stroke drill (note). '3x100 L patas BL' = free, fins, long strokes (note).",
+    "'4x100 (25vel-75mod)': split stays in the note. 'suave' = easy.",
+    "'2x500': rep 1 free progressive every 100 ('prog x100'), rep 2 plain free.",
+    "'300pb' = 300 with pull buoy (free). '200 VE' = varying strokes (choice). '100 afloje' = cooldown."
+  ],
+  "name": "Oct-23",
+  "description": "Oct-23.",
+  "pool_length_meters": 25,
+  "steps": [
+    {"type": "warmup", "distance": 300, "stroke": "free"},
+    {"type": "swim", "distance": 100, "stroke": "free", "equipment": "pull_buoy"},
+    {
+      "type": "repeat",
+      "times": 2,
+      "steps": [
+        {"type": "swim", "distance": 100, "stroke": "free", "note": "Brazadas de ubicación"}
+      ]
+    },
+    {
+      "type": "repeat",
+      "times": 3,
+      "steps": [
+        {"type": "swim", "distance": 100, "stroke": "free", "equipment": "fins", "note": "Brazadas largas (BL)"}
+      ]
+    },
+    {
+      "type": "repeat",
+      "times": 4,
+      "steps": [
+        {"type": "swim", "distance": 100, "stroke": "free", "note": "25 velocidad - 75 moderado"}
+      ]
+    },
+    {"type": "swim", "distance": 100, "stroke": "free", "note": "Suave"},
+    {"type": "swim", "distance": 500, "stroke": "free", "note": "Progresivo cada 100"},
+    {"type": "swim", "distance": 500, "stroke": "free"},
+    {"type": "swim", "distance": 200, "stroke": "free", "note": "Suave"},
+    {"type": "swim", "distance": 300, "stroke": "free", "equipment": "pull_buoy"},
+    {"type": "swim", "distance": 300, "stroke": "free"},
+    {"type": "swim", "distance": 200, "stroke": "choice", "note": "Variando estilos (VE)"},
+    {"type": "cooldown", "distance": 100, "stroke": "free", "note": "Afloje"}
+  ]
+}

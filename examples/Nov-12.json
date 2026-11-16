@@ -1,0 +1,50 @@
+{
+  "_comment": [
+    "Coach screenshot, Noviembre tab. Named 'Nov-12' = swim day.",
+    "Local time Nov 11, ~8:30 PM (server UTC is Nov 12).",
+    "'2x300 (100 tec - 100 est - 100 tec)', one 300 per stroke: stroke goes in the note.",
+    "'4x50 prog opt' = progressive, optional stroke.",
+    "'Serie x3': 100 L/CI/Est with dive start (banqueta), 100 kick, 100 pull buoy.",
+    "'4x100 manop y patas 15sp': one equipment slot, paddles + fins in note, 15 s rest.",
+    "'200 afloje' = easy cooldown."
+  ],
+  "name": "Nov-12",
+  "description": "Nov-12.",
+  "pool_length_meters": 25,
+  "steps": [
+    {"type": "warmup", "distance": 500, "stroke": "free"},
+    {
+      "type": "repeat",
+      "times": 2,
+      "steps": [
+        {"type": "swim", "distance": 300, "stroke": "choice", "note": "100 tecnica - 100 estilo - 100 tecnica. Un estilo distinto cada 300"}
+      ]
+    },
+    {
+      "type": "repeat",
+      "times": 4,
+      "steps": [
+        {"type": "swim", "distance": 50, "stroke": "choice", "note": "Progresivo, estilo optativo"}
+      ]
+    },
+    {
+      "type": "repeat",
+      "times": 3,
+      "steps": [
+        {"type": "swim", "distance": 100, "stroke": "choice", "note": "Libre, combinado o estilo. Salida de banqueta"},
+        {"type": "swim", "distance": 100, "stroke": "choice", "note": "Patada"},
+        {"type": "swim", "distance": 100, "stroke": "free", "equipment": "pull_buoy"}
+      ]
+    },
+    {
+      "type": "repeat",
+      "times": 4,
+      "steps": [
+        {"type": "swim", "distance": 100, "stroke": "free", "equipment": "paddles", "note": "Manoplas y patas (aletas)"},
+        {"type": "rest", "seconds": 15}
+      ]
+    },
+    {"type": "swim", "distance": 200, "stroke": "choice", "note": "Combinado"},
+    {"type": "cooldown", "distance": 200, "stroke": "free", "note": "Afloje"}
+  ]
+}

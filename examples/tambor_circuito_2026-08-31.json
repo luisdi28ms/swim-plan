@@ -1,0 +1,60 @@
+{
+  "_comment": [
+    "Workout from a coach screenshot, week of 2026-08-31 (Del 31 de Agosto al 4 Set.), set titled 'Tambor - Circuito'.",
+    "Not in data/week_2026-08-24.csv (that CSV is the prior week).",
+    "'Serie x3' repeat block matches the 'Serie x4' pattern in examples/serie2_2026-08-24.json: everything",
+    "between 'Serie x3' and the dashed separator repeats 3 times; rows after the separator are sequential.",
+    "'2x300 (50est-100L)' modeled like '2x200 (50pat flecha-50L nad)': outer x2 of an inner 2x(50 stroke + 100 free).",
+    "'300 manoplas y patas' combines paddles + fins; equipment only supports one value, so equipment=paddles",
+    "with the fins noted in the step note, per CLAUDE.md guidance on compound instructions."
+  ],
+  "name": "Tambor - Circuito (31 Ago-4 Set)",
+  "description": "Tambor - Circuito (31 Ago-4 Set).",
+  "pool_length_meters": 25,
+  "steps": [
+    {"type": "warmup", "distance": 500, "stroke": "free"},
+    {
+      "_comment": "Serie x3: 2x50 progressive/optional, 200 kick w/ fins, 100 pull buoy",
+      "type": "repeat",
+      "times": 3,
+      "steps": [
+        {
+          "type": "repeat",
+          "times": 2,
+          "steps": [
+            {"type": "swim", "distance": 50, "stroke": "free", "note": "Progresivo, optativo"}
+          ]
+        },
+        {"type": "swim", "distance": 200, "stroke": "choice", "equipment": "fins", "note": "Patada"},
+        {"type": "swim", "distance": 100, "stroke": "free", "equipment": "pull_buoy"}
+      ]
+    },
+    {
+      "_comment": "2x300 (50est-100L): outer 2x of inner 2x(50 stroke + 100 free)",
+      "type": "repeat",
+      "times": 2,
+      "steps": [
+        {
+          "type": "repeat",
+          "times": 2,
+          "steps": [
+            {"type": "swim", "distance": 50, "stroke": "choice", "note": "Estilo"},
+            {"type": "swim", "distance": 100, "stroke": "free"}
+          ]
+        }
+      ]
+    },
+    {
+      "_comment": "200 hipox 3-5-7: hypoxic breathing pattern",
+      "type": "swim", "distance": 200, "stroke": "free", "note": "Hipoxia 3-5-7 (respiracion)"
+    },
+    {
+      "_comment": "300 manoplas y patas: paddles + fins",
+      "type": "swim", "distance": 300, "stroke": "free", "equipment": "paddles", "note": "Y patas (aletas)"
+    },
+    {
+      "_comment": "200 afloje: cooldown",
+      "type": "cooldown", "distance": 200, "stroke": "free"
+    }
+  ]
+}

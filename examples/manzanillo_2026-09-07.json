@@ -1,0 +1,63 @@
+{
+  "_comment": [
+    "Workout from a coach screenshot, week of 2026-09-07 (7-11 Sep), set titled 'Manzanillo'.",
+    "'1000 (200L-100est-100L-100pat)' modeled as 2x (200 free + 100 stroke + 100 free + 100 fins) = 1000, ",
+    "same pattern as '600 (100L-100est-100L)' in examples/fondo_2026-08-31.json.",
+    "'Serie x3' repeat block: 200 manoplas y pb, 4x50 pat patas prog, 100 CI, 100 suave. Confirmed by user.",
+    "'200 manoplas y pb' combines paddles + pull buoy; equipment only supports one value, so equipment=paddles",
+    "with pull buoy noted in the step note, per CLAUDE.md guidance on compound instructions.",
+    "'CI' (combinado/medley) has no dedicated stroke type, kept as stroke='choice' with a note."
+  ],
+  "name": "Manzanillo (7-11 Sep)",
+  "description": "Manzanillo (7-11 Sep).",
+  "steps": [
+    {
+      "_comment": "1000 (200L-100est-100L-100pat): 2x (200 free + 100 stroke + 100 free + 100 fins)",
+      "type": "repeat",
+      "times": 2,
+      "steps": [
+        {"type": "warmup", "distance": 200, "stroke": "free"},
+        {"type": "swim", "distance": 100, "stroke": "choice", "note": "Estilo (a eleccion)"},
+        {"type": "swim", "distance": 100, "stroke": "free"},
+        {"type": "swim", "distance": 100, "stroke": "choice", "equipment": "fins", "note": "Patada"}
+      ]
+    },
+    {
+      "_comment": "3x100 tec nad",
+      "type": "repeat",
+      "times": 3,
+      "steps": [
+        {"type": "swim", "distance": 100, "stroke": "choice", "note": "Tecnica-nado"}
+      ]
+    },
+    {
+      "_comment": "4x25 vel opt",
+      "type": "repeat",
+      "times": 4,
+      "steps": [
+        {"type": "swim", "distance": 25, "stroke": "choice", "note": "Velocidad, optativo"}
+      ]
+    },
+    {
+      "_comment": "Serie x3: 200 paddles+pull buoy, 4x50 fins kick build, 100 medley, 100 easy free",
+      "type": "repeat",
+      "times": 3,
+      "steps": [
+        {"type": "swim", "distance": 200, "stroke": "free", "equipment": "paddles", "note": "Y pull buoy (pb)"},
+        {
+          "type": "repeat",
+          "times": 4,
+          "steps": [
+            {"type": "swim", "distance": 50, "stroke": "choice", "equipment": "fins", "note": "Patada, progresivo"}
+          ]
+        },
+        {"type": "swim", "distance": 100, "stroke": "choice", "note": "Combinado (CI)"},
+        {"type": "swim", "distance": 100, "stroke": "free", "note": "Suave"}
+      ]
+    },
+    {
+      "_comment": "200 afloje: cooldown",
+      "type": "cooldown", "distance": 200, "stroke": "free"
+    }
+  ]
+}

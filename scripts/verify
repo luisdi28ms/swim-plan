@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+# The code checks of this repo: `verify` from any folder of the repo, or scripts/verify.
+# Offline only: it never logs in to Garmin. It builds a workout from each committed example.
+set -uo pipefail
+cd "$(dirname "$0")/.."
+
+failed=()
+step() { echo "== $*"; "$@" || failed+=("$*"); }
+
+specs_build() {
+  git ls-files -z 'examples/*.json' | xargs -0 .venv/bin/python -c '
+import sys
+from swim_plan.spec import build_workout_from_spec, load_spec
+
+for name in sys.argv[1:]:
+    build_workout_from_spec(load_spec(name))
+    print("ok", name)
+'
+}
+
+step .venv/bin/python -m compileall -q swim_plan
+step .venv/bin/python -m swim_plan --help
+step specs_build
+
+if ((${#failed[@]})); then
+  printf 'verify: FAILED: %s\n' "${failed[@]}"
+  exit 1
+fi
+echo 'verify: PASS'
